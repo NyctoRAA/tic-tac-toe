@@ -16,22 +16,13 @@ function generateBoard() {
     }
 }
 
-gameBoard.addEventListener('click', (event) => {
-    const target = event.target;
-    const index = target.getAttribute('data-index');
+function clearBoard() {
+    const cells = gameBoard.querySelectorAll(".cell");
 
-    if(target.classList.contains('cell') && board[index] === '') {
-        board[index] = currentPlayer;
-        target.textContent = currentPlayer;
-        if(checkWin()) {
-            // #TODO: change the alert to a stats board
-            alert(currentPlayer + ' wins!');
-        } else if (board.every(cell => cell !== '')) {
-            alert("It's a draw!");
-        }
-        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-    }
-});
+    cells.forEach(cell => {
+        cell.textContent = "";
+    })
+}
 
 function checkWin() {
     const winPatterns = [
@@ -49,5 +40,24 @@ function checkWin() {
         return pattern.every(index => board[index] === currentPlayer);
     });
 }
+
+gameBoard.addEventListener('click', (event) => {
+    const target = event.target;
+    const index = target.getAttribute('data-index');
+
+    if(target.classList.contains('cell') && board[index] === '') {
+        board[index] = currentPlayer;
+        target.textContent = currentPlayer;
+        if(checkWin()) {
+            // #TODO: change the alert to a stats board
+            alert(currentPlayer + ' wins!');
+            clearBoard();
+        } else if (board.every(cell => cell !== '')) {
+            alert("It's a draw!");
+            clearBoard();
+        }
+        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+    }
+});
 
 startGameBtn.addEventListener('click', generateBoard);
