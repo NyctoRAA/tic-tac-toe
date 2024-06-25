@@ -65,4 +65,6 @@ gameBoard.addEventListener('click', (event) => {
 });
 
 startGameBtn.addEventListener('click', () => myModal.showModal());
+// startGameBtn.addEventListener('click', generateBoard);
+
 closeModalBtn.addEventListener('click', () => myModal.close());

@@ -22,6 +22,18 @@ body, html {
     font-size: 4rem;
 }
 
+.close-modal-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    border: none;
+    border-radius: 5px;
+    padding: 12px;
+    background-color: lightcoral;
+    font-weight: bolder;
+    color: white;
+}
+
 .new-game-dialog {
     display: none;
     border: none;
@@ -32,4 +44,11 @@ body, html {
 
 dialog[open] {
     display: flex;
+    flex-direction: column;
+}
+
+.gameForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
