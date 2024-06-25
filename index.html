@@ -9,14 +9,32 @@
 <body>
     <main>
         <header>
-            <div>
+            <div class="player1-stats">
                 Player 1:
             </div>
-            <div>
+            <div class="player2-stats">
                 Player 2:
             </div>
         </header>
         <button class="start-game">Start Game</button>
+        <dialog class="new-game-dialog" aria-label="New game">
+            <div class="close-modal">
+                <button class="close-modal-btn">
+                    X
+                </button>
+            </div>
+            <h2>New Game</h2>
+            <form class="gameForm" method="dialog">
+                <div class="form-section">
+                    <label for="player1">Player 1:</label>
+                    <input type="text" name="player1" id="player1">
+                </div>
+                <div class="form-section">
+                    <label for="player2">Player 2:</label>
+                    <input type="text" name="player2" id="player2">
+                </div>
+            </form>
+        </dialog>
         <div class="board-container">
             
         </div>

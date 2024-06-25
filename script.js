@@ -1,8 +1,12 @@
 const main = document.querySelector("main");
 const startGameBtn = document.querySelector(".start-game");
 const gameBoard = document.querySelector('.board-container');
+const myModal = document.querySelector('.new-game-dialog');
+const closeModalBtn = document.querySelector('.close-modal-btn');
 let currentPlayer = "X";
 let board = ['', '', '', '', '', '', '', '', ''];
+let player1Score = 0;
+let player2Score = 0; 
 
 function generateBoard() {
 
@@ -60,4 +64,5 @@ gameBoard.addEventListener('click', (event) => {
     }
 });
 
-startGameBtn.addEventListener('click', generateBoard);
+startGameBtn.addEventListener('click', () => myModal.showModal());
+closeModalBtn.addEventListener('click', () => myModal.close());

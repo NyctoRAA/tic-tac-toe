@@ -21,3 +21,15 @@ body, html {
     cursor: pointer;
     font-size: 4rem;
 }
+
+.new-game-dialog {
+    display: none;
+    border: none;
+    border-radius: 10px;
+    margin: 10vh auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+dialog[open] {
+    display: flex;
+}
