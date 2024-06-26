@@ -4,7 +4,16 @@ body, html {
     box-sizing: border-box;
 }
 
-.board-container {
+header {
+
+}
+
+.round-result {
+    display: none;
+    z-index: 100;
+}
+
+.gameBoard {
     display: grid;
     grid-template-columns: repeat(3, 200px);
     grid-template-rows: repeat(3, 200px);

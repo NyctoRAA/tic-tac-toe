@@ -1,14 +1,31 @@
 const main = document.querySelector("main");
-const startGameBtn = document.querySelector(".start-game");
-const gameBoard = document.querySelector('.board-container');
+const selectPlayersBtn = document.querySelector(".select-players");
+const gameBoard = document.querySelector('.gameBoard');
 const myModal = document.querySelector('.new-game-dialog');
+const gameForm = document.querySelector('.gameForm');
 const closeModalBtn = document.querySelector('.close-modal-btn');
+const playersNameDiv = document.querySelector('.player-names');
+const player1StatsDiv = document.querySelector('.player1-stats');
+const player2StatsDiv = document.querySelector('.player2-stats');
+const roundResultDiv = document.querySelector('.round-result');
 let currentPlayer = "X";
 let board = ['', '', '', '', '', '', '', '', ''];
 let player1Score = 0;
-let player2Score = 0; 
+let player2Score = 0;
+let players = { X: '', O: '' };
+
+const restartGameBtn = document.createElement('button');
+restartGameBtn.classList.add('restart-btn');
+restartGameBtn.textContent = "Restart Game";
+const endGameBtn = document.createElement('button');
+endGameBtn.classList.add('end-game-btn');
+endGameBtn.textContent = "End Game";
 
 function generateBoard() {
+    gameBoard.style.display = 'grid';
+    playersNameDiv.style.display = 'flex';
+    player1StatsDiv.style.display = 'flex';
+    player2StatsDiv.style.display = 'flex';
 
     if(gameBoard.children.length > 0) return;
 
@@ -18,6 +35,14 @@ function generateBoard() {
         cell.setAttribute('data-index', i);
         gameBoard.appendChild(cell);
     }
+
+    const gameBoardButtonsContainer = document.querySelector(".gameBoard-buttons");
+    if (!gameBoardButtonsContainer.contains(restartGameBtn)) {
+        gameBoardButtonsContainer.appendChild(restartGameBtn);
+    }
+    if (!gameBoardButtonsContainer.contains(endGameBtn)) {
+        gameBoardButtonsContainer.appendChild(endGameBtn);
+    }
 }
 
 function clearBoard() {
@@ -26,6 +51,8 @@ function clearBoard() {
     cells.forEach(cell => {
         cell.textContent = "";
     })
+
+    board = ['', '', '', '', '', '', '', '', ''];
 }
 
 function checkWin() {
@@ -45,6 +72,61 @@ function checkWin() {
     });
 }
 
+function updateScore(reset = false) {
+    if (reset) {
+        player1Score = 0;
+        player2Score = 0;
+    } else {
+        if (currentPlayer === "X") {
+            player1Score++;
+        } else {
+            player2Score++;
+        }
+    }
+
+    player1StatsDiv.textContent = `${gameForm.player1.value} Score: ${player1Score}`;
+    player2StatsDiv.textContent = `${gameForm.player2.value} Score: ${player2Score}`;
+}
+
+function showResult(message) {
+    roundResultDiv.style.display = "flex";
+    roundResultDiv.textContent = message;
+    setTimeout(() => {
+        roundResultDiv.textContent = '';
+    }, 2400); // seconds for the result of the round to disappear
+}
+
+function restartGame() {
+    clearBoard();
+    updateScore(true);
+}
+
+function endGame() {
+    // location.reload();
+    clearBoard();
+
+    while (gameBoard.firstChild) {
+        gameBoard.removeChild(gameBoard.firstChild);
+    }
+
+    gameBoard.style.display = 'none';
+    playersNameDiv.style.display = 'none';
+    player1StatsDiv.style.display = 'none';
+    player2StatsDiv.style.display = 'none';
+    roundResultDiv.style.display = 'none';
+
+    restartGameBtn.remove();
+    endGameBtn.remove();
+
+    player1Score = 0;
+    player2Score = 0;
+
+    players.X = '';
+    players.O = '';
+
+    currentPlayer = "X";
+}
+
 gameBoard.addEventListener('click', (event) => {
     const target = event.target;
     const index = target.getAttribute('data-index');
@@ -53,18 +135,29 @@ gameBoard.addEventListener('click', (event) => {
         board[index] = currentPlayer;
         target.textContent = currentPlayer;
         if(checkWin()) {
-            // #TODO: change the alert to a stats board
-            alert(currentPlayer + ' wins!');
+            showResult(`${players[currentPlayer]} wins!`);
+            updateScore();
             clearBoard();
         } else if (board.every(cell => cell !== '')) {
-            alert("It's a draw!");
+            showResult("It's a draw!");
             clearBoard();
         }
         currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
     }
 });
 
-startGameBtn.addEventListener('click', () => myModal.showModal());
-// startGameBtn.addEventListener('click', generateBoard);
+gameForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    players.X = gameForm.player1.value;
+    players.O = gameForm.player2.value;
+    myModal.close();
+    generateBoard();
+    playersNameDiv.textContent = `${players.X} vs ${players.O}`;
+    player1StatsDiv.textContent = `${gameForm.player1.value} Score: ${player1Score}`;
+    player2StatsDiv.textContent = `${gameForm.player2.value} Score: ${player1Score}`;
+})
 
+selectPlayersBtn.addEventListener('click', () => myModal.showModal());
 closeModalBtn.addEventListener('click', () => myModal.close());
+restartGameBtn.addEventListener('click', restartGame);
+endGameBtn.addEventListener('click', endGame);

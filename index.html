@@ -9,17 +9,14 @@
 <body>
     <main>
         <header>
+            <h1>Stats</h1>
             <div class="player1-stats">
-                Player 1:
             </div>
             <div class="player2-stats">
-                Player 2:
             </div>
-            <div class="player">
-                
-            </div>
+            <div class="player-names"></div>
         </header>
-        <button class="start-game">Start Game</button>
+        <button class="select-players">Select Players</button>
         <dialog class="new-game-dialog" aria-label="New game">
             <div class="close-modal">
                 <button class="close-modal-btn">
@@ -30,19 +27,23 @@
             <form class="gameForm" method="dialog">
                 <div class="form-section">
                     <label for="player1">Player 1:</label>
-                    <input type="text" name="player1" id="player1">
+                    <input type="text" name="player1" id="player1" required>
                 </div>
                 <div class="form-section">
                     <label for="player2">Player 2:</label>
-                    <input type="text" name="player2" id="player2">
+                    <input type="text" name="player2" id="player2" required>
                 </div>
+                <button type="submit">Start Game</button>
             </form>
         </dialog>
-        <div class="board-container">
+        <div class="gameBoard-container">
+            <div class="gameBoard">
             
+            </div>
+            <div class="gameBoard-buttons"></div>
         </div>
     </main>
-    
+    <div class="round-result"></div>
     <script src="script.js"></script>
 </body>
 </html>
