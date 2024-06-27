@@ -89,10 +89,14 @@ function updateScore(reset = false) {
 }
 
 function showResult(message) {
-    roundResultDiv.style.display = "flex";
     roundResultDiv.textContent = message;
-    setTimeout(() => {
-        roundResultDiv.textContent = '';
+      roundResultDiv.style.display = "flex";
+      setTimeout(() => {
+        roundResultDiv.classList.add('hidden');
+        setTimeout(() => {
+          roundResultDiv.style.display = "none";
+          roundResultDiv.classList.remove('hidden');
+        }, 400); // same time as the defined in the css transition
     }, 2400); // seconds for the result of the round to disappear
 }
 
