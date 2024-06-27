@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'GameFont';
+    src: url(fonts/BlackOpsOne-Regular.ttf);
+}
+
 body, html {
     margin: 0;
     padding: 0;
@@ -8,9 +13,9 @@ body, html {
     cursor: pointer;
 }
 
-header {
+/* header {
 
-}
+} */
 
 .player-names, .player1-stats, .player2-stats {
     display: none; /* Escondido até o tabuleiro ser gerado */
