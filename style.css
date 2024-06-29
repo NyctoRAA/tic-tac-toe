@@ -8,10 +8,16 @@ body, html {
     padding: 0;
     box-sizing: border-box;
     font-family: 'GameFont', Arial, Helvetica, sans-serif;
+    background-color: midnightblue;
+    color: yellow;
 }
 
-.select-players, .close-modal-btn, .restart-btn, .end-game-btn {
+button {
+    font-family: 'GameFont', Arial, Helvetica, sans-serif;
+    background-color: yellow;
+    color: midnightblue;
     cursor: pointer;
+    border: none;
 }
 
 /* header {
@@ -25,7 +31,8 @@ body, html {
 .round-result {
     display: none;
     z-index: 100;
-    background-color: lightblue;
+    background-color: yellow;
+    color: midnightblue;
     position: fixed;
     inset: 0px;
     width: 34rem;
@@ -54,12 +61,18 @@ body, html {
 }
 
 .cell {
-    border: 1px solid black;
+    border: 1px solid midnightblue;
+    background-color: yellow;
+    color: midnightblue;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    font-size: 4rem;
+    font-size: 5rem;
+}
+
+.cell:hover {
+    opacity: 0.9;
 }
 
 .close-modal-btn {
@@ -80,6 +93,13 @@ body, html {
     border-radius: 10px;
     margin: 10vh auto;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background-color: yellow;
+    color: blue;
+}
+
+.new-game-dialog button {
+    background-color: midnightblue;
+    color: yellow;
 }
 
 dialog[open] {
@@ -91,4 +111,11 @@ dialog[open] {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.gameForm input {
+    outline: none;
+    background-color: midnightblue;
+    border: none;
+    color: yellow;
 }
