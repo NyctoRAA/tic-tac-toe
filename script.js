@@ -26,6 +26,7 @@ function generateBoard() {
     playersNameDiv.style.display = 'flex';
     player1StatsDiv.style.display = 'flex';
     player2StatsDiv.style.display = 'flex';
+    selectPlayersBtn.style.display = 'none';
 
     if(gameBoard.children.length > 0) return;
 
@@ -108,6 +109,8 @@ function restartGame() {
 function endGame() {
     // location.reload();
     clearBoard();
+
+    selectPlayersBtn.style.display = "flex";
 
     while (gameBoard.firstChild) {
         gameBoard.removeChild(gameBoard.firstChild);
