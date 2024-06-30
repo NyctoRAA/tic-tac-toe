@@ -29,7 +29,7 @@ main {
     min-height: 100%;
 }
 
-button {
+.select-players, .close-modal-btn, .restart-btn, .end-game-btn, .start-game-btn {
     font-family: 'GameFont', Arial, Helvetica, sans-serif;
     background-color: yellow;
     color: midnightblue;
@@ -37,24 +37,56 @@ button {
     border: none;
     padding: 10px;
     border-radius: 10px;
+    font-weight: bolder;
+}
+
+.restart-btn, .end-game-btn {
+    font-size: 1.2rem;
+    border-radius: 12px;
 }
 
 button:hover {
     opacity: 0.9;
 }
 
-/* header {
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
 
-} */
+.header-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.players-stats {
+    display: flex;
+    gap: 50px;
+    font-size: 1.5rem;
+}
+
+.player-names {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+.player1-stats, .player2-stats {
+    gap: 12px;
+}
 
 h1 {
-    font-size: 4rem;
+    font-size: 5rem;
+    text-shadow: yellow 1px 0 7px;
 }
 
 .select-players {
     padding: 20px;
     font-size: 2rem;
     border-radius: 15px;
+    box-shadow: 1px 1px 5px yellow;
 }
 
 .player-names, .player1-stats, .player2-stats {
@@ -63,9 +95,14 @@ h1 {
 
 .round-result {
     display: none;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    border-radius: 20px;
+    padding: 20px;
     z-index: 100;
-    background-color: yellow;
-    color: midnightblue;
+    background-color: midnightblue;
+    color: yellow;
     position: fixed;
     inset: 0px;
     width: 34rem;
@@ -109,10 +146,7 @@ h1 {
     align-items: center;
     cursor: pointer;
     font-size: 5rem;
-}
-
-.cell:hover {
-    opacity: 0.9;
+    font-family: 'GameFont', Arial, Helvetica, sans-serif;
 }
 
 .close-modal-btn {

@@ -89,8 +89,8 @@ function updateScore(reset = false) {
         }
     }
 
-    player1StatsDiv.textContent = `${gameForm.player1.value} Score: ${player1Score}`;
-    player2StatsDiv.textContent = `${gameForm.player2.value} Score: ${player2Score}`;
+    player1StatsDiv.innerHTML = `<u>${gameForm.player1.value}</u> Score: ${player1Score}`;
+    player2StatsDiv.innerHTML = `<u>${gameForm.player2.value}</u> Score: ${player2Score}`;
 }
 
 function showResult(message) {
@@ -174,11 +174,11 @@ gameForm.addEventListener('submit', (event) => {
     closeModal();
     generateBoard();
     playersNameDiv.textContent = `${players.X} vs ${players.O}`;
-    player1StatsDiv.textContent = `${gameForm.player1.value} Score: ${player1Score}`;
-    player2StatsDiv.textContent = `${gameForm.player2.value} Score: ${player1Score}`;
+    player1StatsDiv.innerHTML = `<u>${gameForm.player1.value}</u> Score: ${player1Score}`;
+    player2StatsDiv.innerHTML = `<u>${gameForm.player2.value}</u> Score: ${player2Score}`;
 })
 
-selectPlayersBtn.addEventListener('click', () => openModal);
-closeModalBtn.addEventListener('click', () => closeModal);
+selectPlayersBtn.addEventListener('click', openModal);
+closeModalBtn.addEventListener('click', closeModal);
 restartGameBtn.addEventListener('click', restartGame);
 endGameBtn.addEventListener('click', endGame);
