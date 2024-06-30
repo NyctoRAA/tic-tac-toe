@@ -8,6 +8,10 @@ const playersNameDiv = document.querySelector('.player-names');
 const player1StatsDiv = document.querySelector('.player1-stats');
 const player2StatsDiv = document.querySelector('.player2-stats');
 const roundResultDiv = document.querySelector('.round-result');
+const backdrop = document.createElement('div');
+backdrop.classList.add('backdrop');
+document.body.appendChild(backdrop);
+
 let currentPlayer = "X";
 let board = ['', '', '', '', '', '', '', '', ''];
 let player1Score = 0;
@@ -134,6 +138,16 @@ function endGame() {
     currentPlayer = "X";
 }
 
+function openModal() {
+    myModal.showModal();
+    backdrop.classList.add('show');
+}
+
+function closeModal() {
+    myModal.close();
+    backdrop.classList.remove('show');
+}
+
 gameBoard.addEventListener('click', (event) => {
     const target = event.target;
     const index = target.getAttribute('data-index');
@@ -157,14 +171,14 @@ gameForm.addEventListener('submit', (event) => {
     event.preventDefault();
     players.X = gameForm.player1.value;
     players.O = gameForm.player2.value;
-    myModal.close();
+    closeModal();
     generateBoard();
     playersNameDiv.textContent = `${players.X} vs ${players.O}`;
     player1StatsDiv.textContent = `${gameForm.player1.value} Score: ${player1Score}`;
     player2StatsDiv.textContent = `${gameForm.player2.value} Score: ${player1Score}`;
 })
 
-selectPlayersBtn.addEventListener('click', () => myModal.showModal());
-closeModalBtn.addEventListener('click', () => myModal.close());
+selectPlayersBtn.addEventListener('click', () => openModal);
+closeModalBtn.addEventListener('click', () => closeModal);
 restartGameBtn.addEventListener('click', restartGame);
 endGameBtn.addEventListener('click', endGame);

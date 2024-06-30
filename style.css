@@ -6,10 +6,27 @@
 body, html {
     margin: 0;
     padding: 0;
+    height: 100%;
     box-sizing: border-box;
     font-family: 'GameFont', Arial, Helvetica, sans-serif;
     background-color: midnightblue;
     color: yellow;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
 }
 
 button {
@@ -18,11 +35,27 @@ button {
     color: midnightblue;
     cursor: pointer;
     border: none;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+button:hover {
+    opacity: 0.9;
 }
 
 /* header {
 
 } */
+
+h1 {
+    font-size: 4rem;
+}
+
+.select-players {
+    padding: 20px;
+    font-size: 2rem;
+    border-radius: 15px;
+}
 
 .player-names, .player1-stats, .player2-stats {
     display: none; /* Escondido até o tabuleiro ser gerado */
@@ -60,6 +93,13 @@ button {
     align-content: center;
 }
 
+.gameBoard-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
 .cell {
     border: 1px solid midnightblue;
     background-color: yellow;
@@ -89,9 +129,9 @@ button {
 
 .new-game-dialog {
     display: none;
-    border: none;
+    border: 3px solid midnightblue;
     border-radius: 10px;
-    margin: 10vh auto;
+    margin: 20vh auto;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     background-color: yellow;
     color: blue;
@@ -105,12 +145,30 @@ button {
 dialog[open] {
     display: flex;
     flex-direction: column;
+    backdrop-filter: blur(10px);
+}
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    z-index: 99;
+    display: none;
+}
+
+.backdrop.show {
+    display: block;
 }
 
 .gameForm {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    text-align: center;
 }
 
 .gameForm input {
@@ -118,4 +176,5 @@ dialog[open] {
     background-color: midnightblue;
     border: none;
     color: yellow;
+    padding: 5px;
 }
