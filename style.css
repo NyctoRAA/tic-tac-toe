@@ -90,7 +90,7 @@ h1 {
 }
 
 .player-names, .player1-stats, .player2-stats {
-    display: none; /* Escondido até o tabuleiro ser gerado */
+    display: none;
 }
 
 .round-result {
@@ -156,9 +156,7 @@ h1 {
     border: none;
     border-radius: 5px;
     padding: 12px;
-    background-color: lightcoral;
     font-weight: bolder;
-    color: white;
 }
 
 .new-game-dialog {
