@@ -8,6 +8,7 @@ const playersNameDiv = document.querySelector('.player-names');
 const player1StatsDiv = document.querySelector('.player1-stats');
 const player2StatsDiv = document.querySelector('.player2-stats');
 const roundResultDiv = document.querySelector('.round-result');
+const statsTitle = document.querySelector('.stats-title');
 const backdrop = document.createElement('div');
 backdrop.classList.add('backdrop');
 document.body.appendChild(backdrop);
@@ -30,6 +31,7 @@ function generateBoard() {
     playersNameDiv.style.display = 'flex';
     player1StatsDiv.style.display = 'flex';
     player2StatsDiv.style.display = 'flex';
+    statsTitle.style.display = 'flex';
     selectPlayersBtn.style.display = 'none';
 
     if(gameBoard.children.length > 0) return;
@@ -115,6 +117,7 @@ function endGame() {
     clearBoard();
 
     selectPlayersBtn.style.display = "flex";
+    statsTitle.style.display = "none";
 
     while (gameBoard.firstChild) {
         gameBoard.removeChild(gameBoard.firstChild);
