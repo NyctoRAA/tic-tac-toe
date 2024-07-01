@@ -26,7 +26,8 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100%;
+    /* min-height: 100%; */
+    overflow: hidden;
 }
 
 .select-players, .close-modal-btn, .restart-btn, .end-game-btn, .start-game-btn {
@@ -209,4 +210,11 @@ dialog[open] {
     border: none;
     color: yellow;
     padding: 5px;
+}
+
+foote
+
+a {
+    text-decoration: none;
+    color: yellow;
 }
