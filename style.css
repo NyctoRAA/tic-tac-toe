@@ -212,9 +212,21 @@ dialog[open] {
     padding: 5px;
 }
 
-foote
+footer {
+    padding: 10px;
+    font-size: 1.2rem;
+}
 
 a {
     text-decoration: none;
     color: yellow;
+}
+
+a:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: rgb(255, 187, 0);
 }
