@@ -6,7 +6,6 @@
 body, html {
     margin: 0;
     padding: 0;
-    /* height: 100%; */
     box-sizing: border-box;
     font-family: 'GameFont', Arial, Helvetica, sans-serif;
     background-color: midnightblue;
@@ -18,7 +17,6 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* height: 100%; */
 }
 
 main {
@@ -85,7 +83,6 @@ header {
 .main-title {
     font-size: 5rem;
     text-shadow: yellow 1px 0 7px;
-    /* margin-top: 120px; */
     margin: 0;
 }
 
@@ -239,7 +236,6 @@ dialog[open] {
 }
 
 footer {
-    /* padding: 20px; */
     font-size: 1.2rem;
 }
 
